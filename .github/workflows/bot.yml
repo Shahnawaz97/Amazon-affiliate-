@@ -13,8 +13,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Debug: List files in the workspace
-        run: ls -al  # ✅ This command prints all files, helping debug missing files
+      - name: Debug - List files in workspace
+        run: ls -al  # ✅ List all files in the repo to check if 'requirements.txt' exists
 
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -22,4 +22,4 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt  # ✅ Install dependencies
