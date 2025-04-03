@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Affiliate Link Converter Bot</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="h3 mb-0">Amazon Affiliate Link Converter Bot</h1>
+                    </div>
+                    <div class="card-body">
+                        {% if error %}
+                        <div class="alert alert-danger">
+                            <h4 class="alert-heading">Bot Error</h4>
+                            <p>{{ error }}</p>
+                            <hr>
+                            <p class="mb-0">Please check your Telegram token and try again.</p>
+                        </div>
+                        {% elif bot_info %}
+                        <div class="alert alert-success">
+                            <h4 class="alert-heading">Bot Active</h4>
+                            <p>Your bot <strong>@{{ bot_info.username }}</strong> is up and running!</p>
+                            <p>Bot is running in <strong>{{ 'webhook' if webhook_mode else 'polling' }}</strong> mode.</p>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-warning">
+                            <h4 class="alert-heading">Bot Status Unknown</h4>
+                            <p>Unable to determine bot status.</p>
+                        </div>
+                        {% endif %}
+
+                        <h2 class="h4 mt-4">How to Use the Bot</h2>
+                        <p>This Telegram bot automatically converts Amazon product links to affiliate links.</p>
+                        
+                        <div class="card mt-3 mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Instructions</h5>
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item">Open Telegram and search for <strong>@{{ bot_info.username if bot_info else 'your_bot_username' }}</strong></li>
+                                    <li class="list-group-item">Start a conversation with the bot by clicking "Start" or sending the <code>/start</code> command</li>
+                                    <li class="list-group-item">Send a message containing an Amazon product link</li>
+                                    <li class="list-group-item">The bot will respond with the converted affiliate link</li>
+                                    <li class="list-group-item">Copy and share the affiliate link to earn commissions</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <h2 class="h4">Supported Link Formats</h2>
+                        <p>The bot can recognize and convert these Amazon link formats:</p>
+                        <ul class="list-group mb-4">
+                            <li class="list-group-item"><code>https://www.amazon.com/dp/XXXXXXXXXX</code></li>
+                            <li class="list-group-item"><code>https://www.amazon.com/gp/product/XXXXXXXXXX</code></li>
+                            <li class="list-group-item"><code>https://www.amazon.co.uk/dp/XXXXXXXXXX</code></li>
+                            <li class="list-group-item"><code>https://amazon.com/...</code> (most Amazon domains are supported)</li>
+                        </ul>
+
+                        <div class="d-grid gap-2">
+                            <a href="https://t.me/{{ bot_info.username if bot_info else 'your_bot_username' }}" target="_blank" class="btn btn-primary">
+                                Open Bot in Telegram
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small>Server Status: Active</small>
+                            <small>Amazon Affiliate Link Converter</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
