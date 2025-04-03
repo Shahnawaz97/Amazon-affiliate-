@@ -7,12 +7,12 @@ logging.basicConfig(level=logging.DEBUG,
 logger = logging.getLogger(__name__)
 
 # Bot configuration
-TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
+TELEGRAM_TOKEN = os.environ.get("7802861698:AAE-lgiNKas6oKJaWD0x-8BfYnrGoieIp_A", "")
 if not TELEGRAM_TOKEN:
     logger.error("No Telegram token provided! Set the TELEGRAM_TOKEN environment variable.")
 
 # Amazon affiliate configuration
-AFFILIATE_TAG = os.environ.get("AMAZON_AFFILIATE_TAG", "yourtag-20")
+AFFILIATE_TAG = os.environ.get("AMAZON_AFFILIATE_TAG", "shahn")
 
 # Webhook settings (for production)
 WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "")
